@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio Personal - Modo Oscuro</title>
+
+  <!-- ================= ESTILOS CSS EN MODO OSCURO ================= -->
+  <style>
+    /* 1. Variables de colores para modo oscuro */
+    :root {
+      --color-fondo: #0f172a;        /* Azul muy oscuro para el fondo general */
+      --color-tarjeta: #1e293b;      /* Tono más claro para cajas y barras */
+      --color-tarjeta-hover: #273549;/* Resalte al pasar el mouse por tarjetas */
+      --color-primario: #38bdf8;     /* Celeste brillante para acentos y enlaces */
+      --color-texto: #f1f5f9;        /* Blanco suave para textos principales */
+      --color-texto-suave: #94a3b8;  /* Gris claro para descripciones */
+      --borde: #334155;              /* Líneas divisorias sutiles */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces */
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+    }
+
+    /* 2. Barra de navegación */
+    header {
+      background-color: rgba(15, 23, 42, 0.85); /* Semitransparente */
+      backdrop-filter: blur(8px);                 /* Efecto de vidrio esmerilado */
+      border-bottom: 1px solid var(--borde);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-primario);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-texto-suave);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-primario);
+    }
+
+    /* 3. Contenedor principal */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--color-texto);
+      border-bottom: 1px solid var(--borde);
+      padding-bottom: 0.5rem;
+    }
+
+    /* 4. Sección Sobre mí / Hero */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1rem 1rem 1rem;
+    }
+
+    .foto-perfil {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-primario);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--color-texto-suave);
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .boton {
+      display: inline-block;
+      background-color: var(--color-primario);
+      color: #0f172a; /* Texto oscuro sobre botón brillante para buen contraste */
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .boton:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* 5. Sección de Habilidades */
+    .habilidades-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      list-style: none;
+    }
+
+    .habilidad-tag {
+      background-color: var(--color-tarjeta);
+      border: 1px solid var(--borde);
+      color: var(--color-primario);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+
+    .habilidad-tag:hover {
+      border-color: var(--color-primario);
+    }
+
+    /* 6. Sección de Proyectos */
+    .proyectos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tarjeta-proyecto {
+      background-color: var(--color-tarjeta);
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+    }
+
+    .tarjeta-proyecto:hover {
+      transform: translateY(-4px);
+      background-color: var(--color-tarjeta-hover);
+      border-color: var(--color-primario);
+    }
+
+    .tarjeta-proyecto h3 {
+      margin-bottom: 0.6rem;
+      color: #ffffff;
+    }
+
+    .tarjeta-proyecto p {
+      color: var(--color-texto-suave);
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .enlace-proyecto {
+      text-decoration: none;
+      color: var(--color-primario);
+      font-weight: 600;
+      font-size: 0.9rem;
+      align-self: flex-start;
+    }
+
+    .enlace-proyecto:hover {
+      text-decoration: underline;
+    }
+
+    /* 7. Sección de Contacto */
+    .contacto-info {
+      background-color: var(--color-tarjeta);
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .contacto-info p {
+      margin-bottom: 0.75rem;
+      color: var(--color-texto-suave);
+    }
+
+    .contacto-info strong {
+      color: var(--color-texto);
+    }
+
+    .contacto-info a {
+      color: var(--color-primario);
+      text-decoration: none;
+    }
+
+    .contacto-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* 8. Pie de página */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--color-texto-suave);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--borde);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <header>
+    <nav>
+      <div class="logo">&lt;MiPortafolio /&gt;</div>
+      <ul class="nav-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main>
+
+    <!-- 1. Sección: Sobre mí -->
+    <section id="sobre-mi" class="hero">
+      <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300&h=300&fit=crop" alt="Foto de perfil" class="foto-perfil">
+      <h1>¡Hola! Soy Tu Nombre</h1>
+      <p>Desarrollador web en formación. Me enfoco en escribir código limpio, semántico y en diseñar interfaces cómodas tanto en luz como en oscuridad.</p>
+      <a href="#contacto" class="boton">Contáctame</a>
+    </section>
+
+    <!-- 2. Sección: Habilidades -->
+    <section id="habilidades">
+      <h2>Habilidades Técnicas</h2>
+      <ul class="habilidades-lista">
+        <li class="habilidad-tag">HTML5 Semántico</li>
+        <li class="habilidad-tag">CSS3 (Grid y Flexbox)</li>
+        <li class="habilidad-tag">Dark Mode / Responsive</li>
+        <li class="habilidad-tag">Git y GitHub</li>
+        <li class="habilidad-tag">Bases de JavaScript</li>
+      </ul>
+    </section>
+
+    <!-- 3. Sección: Proyectos -->
+    <section id="proyectos">
+      <h2>Mis Proyectos</h2>
+      <div class="proyectos-grid">
+
+        <article class="tarjeta-proyecto">
+          <div>
+            <h3>Portafolio en Dark Mode</h3>
+            <p>Estructura semántica en HTML y diseño nocturno con variables de CSS, estados hover y Flexbox.</p>
+          </div>
+          <a href="#" class="enlace-proyecto">Ver repositorio &rarr;</a>
+        </article>
+
+        <article class="tarjeta-proyecto">
+          <div>
+            <h3>Calculadora Interactiva</h3>
+            <p>Diseño de botones con CSS Grid y diseño responsivo para diferentes resoluciones de pantalla.</p>
+          </div>
+          <a href="#" class="enlace-proyecto">Ver repositorio &rarr;</a>
+        </article>
+
+        <article class="tarjeta-proyecto">
+          <div>
+            <h3>Página de Captura / Landing Page</h3>
+            <p>Maqueta moderna de una página de aterrizaje con encabezados llamativos y llamadas a la acción.</p>
+          </div>
+          <a href="#" class="enlace-proyecto">Ver repositorio &rarr;</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 4. Sección: Contacto -->
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <div class="contacto-info">
+        <p>¿Tienes alguna consulta o propuesta de proyecto? Envíame un mensaje:</p>
+        <p>📧 <strong>Correo:</strong> tunombre@correo.com</p>
+        <p>💼 <strong>LinkedIn:</strong> <a href="#" target="_blank">linkedin.com/in/tu-perfil</a></p>
+        <p>🐙 <strong>GitHub:</strong> <a href="#" target="_blank">github.com/tu-usuario</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 Tu Nombre. Diseñado en Modo Oscuro con HTML & CSS.</p>
+  </footer>
+
+</body>
+</html>
